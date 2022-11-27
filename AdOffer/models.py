@@ -14,3 +14,12 @@ class Flight(models.Model):
     is_rejected = models.BooleanField(default=False)
 
 
+class BookSeat(models.Model):
+    passengers_no = models.IntegerField()
+    Seat_no = models.CharField(max_length=100)
+
+
+class Payment(models.Model):
+    payment_type = models.CharField(max_length=100)
+    payment_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    Total_amount = models.DecimalField(max_digits=20, decimal_places=2)
