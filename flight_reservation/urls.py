@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from AdOffer import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('accounts.urls')),
+    path('', views.Offer, name='main'),
+    path("offers/", views.AdminProcess, name= 'offer'),
+    path("accept/<int:pk>", views.AcceptOfferAdmin,name="accept"),
+    path("reject/<int:pk>", views.RejectOfferAdmin, name="reject"),
+    path('profile/', views.Profile, name='profile')
 ]

@@ -1,5 +1,4 @@
 from .models import Account
-from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth import (
                                   authenticate,
@@ -40,7 +39,6 @@ def registration_view(request):
             email    = form.cleaned_data.get('email')
             raw_pass = form.cleaned_data.get('password1')
             account = authenticate(email=email, password = raw_pass)
-            print(account)
             login(request, account)
             messages.success(request, "You have been Registered as {}".format(request.user.username))
             return redirect('home')
@@ -74,9 +72,7 @@ def  login_view(request):
         email   = request.POST.get('email')
         password = request.POST.get('password')
         user =  authenticate(email=email, password=password)
-        print(user)
         if user:
-            print(user)
             try:
                 login(request, user)
                 messages.success(request, "Logged In")

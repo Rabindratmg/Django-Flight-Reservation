@@ -1,0 +1,34 @@
+
+
+{% block content %}
+<table class='table'>
+    <thead>
+        <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Offer</th>
+        <th>Original</th>
+        <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for offer in my_offer %}
+        <tr>
+            <td>{{ offer.From }}</td>
+            <td>{{ offer.To }}</td>
+            <td>{{ offer.offer }}</td>
+            <td>{{ offer.orginal }}</td>
+            {% if offer.is_approved %}
+                <td>Accepted</td>
+            {% elif offer.is_rejected %}
+                <td> Rejected <td>
+            {% else %}
+                <td> Under review <td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
