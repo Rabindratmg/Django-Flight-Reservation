@@ -1,0 +1,52 @@
+{% include 'base.html' %}
+
+{% block content %}
+    {% if user.is_superuser %}
+
+        {% if Offers %}
+            
+            <table class='table'>
+                <thead>
+                    <tr>
+                    <th>By</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Offer</th>
+                    <th>Original</th>
+                    <th>Options </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for offer in Offers %}
+                    <tr>
+                        <td>{{ offer.user }}</td>
+                        <td>{{ offer.From }}</td>
+                        <td>{{ offer.To }}</td>
+                        <td>{{ offer.offer }}</td>
+                        <td>{{ offer.orginal }}</td>
+                        <td><a href="{% url 'reject' offer.id %}"><button class="btn btn-danger"> Reject </button> </a>  <a href="{% url 'accept' offer.id %}"><button class="btn btn-primary"> Approve </button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                
+            
+           
+
+        {% else %}
+            <h5>No any offers for review</h5>
+        {% endif %}
+
+
+    {% else%}
+        <div class="container">
+            <form id="offer_form" class="form" method="post">
+                {% csrf_token %} <!-- for security reasons -->
+                {{Offer_form.as_p}} <!-- rendering form as paragraph -->
+                <input type="submit" class="btn  btn-outline-info" value="Send to Moderator">
+                </form>
+        </div>
+    {% endif %}
+
+{% endblock content %}
