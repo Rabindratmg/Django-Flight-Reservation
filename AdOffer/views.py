@@ -53,13 +53,13 @@ def AcceptOfferAdmin(request,pk):
     offer = Flight.objects.get(id=pk)
     offer.is_approved = True
     offer.save()
-    return redirect('offer')
+    return redirect('adminreview')
 
 def RejectOfferAdmin(request,pk):
     offer = Flight.objects.get(id=pk)
     offer.is_rejected = True
     offer.save()
-    return redirect('offer')
+    return redirect('adminreview')
 
 def Payments(request):
     seats= BookSeat.objects.all()
