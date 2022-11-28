@@ -5,6 +5,10 @@ from .forms import OfferForm
 
 # Create your views here.
 
+
+def Home(request):
+    return render(request, "Adoffer/welcome1.html", {})
+
 def Offer(request):
     context = {}
     if request.POST:
@@ -19,6 +23,7 @@ def Offer(request):
     else:
         form = OfferForm()
         context['Offer_form'] = form
+
     return render(request,"AdOffer/Offer.html", context)
 
 
@@ -29,7 +34,7 @@ def AdminProcess(request):
     }
         
 
-    return render(request, "AdOffer/Offer.html", context)
+    return render(request, "AdOffer/admin.html", context)
 
 
 def Profile(request):
@@ -37,7 +42,7 @@ def Profile(request):
         "my_offer": Flight.objects.filter(user=request.user)
 
     }
-    return render (request, 'Adoffer/profile.html', context)
+    return render (request, 'AdOffer/profile.html', context)
 
 
 def AcceptOfferAdmin(request,pk):
@@ -51,3 +56,15 @@ def RejectOfferAdmin(request,pk):
     offer.is_rejected = True
     offer.save()
     return redirect('offer')
+
+def Payment(request):
+    return render(request, 'AdOffer/payment.html')
+
+def Passenger(request):
+    return render(request, 'AdOffer/numberofpassenger.html')
+
+def ConfirmBooking(request):
+    return render(request, 'AdOffer/bookingconfirmed.html')
+
+def Search(request):
+    return render(request, 'AdOffer/searchresult1.html')

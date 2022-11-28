@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock  %}
+
+{% block content  %}
+    <div id="wrapper">
+        <link rel="stylesheet" href="{% static './css/welcome2.css' %}">
+        <div class="nav">
+            <div class="nav-item"><a href="{% url 'addoffer' %}">Place Offer</a></div>
+            <div class="nav-item"><a href="{% url 'adminreview' %}">Moderator</a></div>
+            <div class="nav-item"><a href="{% url 'profile' %}">Website Owner</a></div>
+    </div>
+        <div class="herotext">
+            <span class="styled-header-text">Student Travel</span>
+        </div>
+        <div class="nav">
+            <div class="nav-item"><a href="#" class="styled-menu-text">About Us</a></div>
+            <div class="nav-item"><a href="#" class="styled-menu-text">Contact Us</a></div>   
+        </div>
+        <br>
+        <div class="welcomeMessage">Welcome {{ request.user.username }}</div>
+        <div class="searchField">
+            <form>
+                <button class="searchBtn" type="submit">Search</button>
+                <input type="text" placeholder="From ? ">
+                <input type="text" placeholder="To ? ">
+            </form>
+        </div>
+        <br>
+        <div class="welcomeMessage">Trending</div>
+        <div class="destinations">
+            <div class="nav-item"><a href="#">Perth</a></div>
+            <div class="nav-item"><a href="#">Sydney</a></div>
+            <div class="nav-item"><a href="#">Gold Coast</a></div>
+        </div>
+        <div class="welcomeMessage">Popular</div>
+        <div class="popularTable">
+            <table class="popTable">
+                <tr>
+                    <td class="place">Sydney</td>
+                    <td class="likes">25 Likes</td>
+                </tr>
+                <tr>
+                    <td class="place">Gold Coast</td>
+                    <td class="likes">23 Likes</td>
+                </tr>
+                <tr>
+                    <td class="place">Darwin</td>
+                    <td class="likes">22 Likes</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

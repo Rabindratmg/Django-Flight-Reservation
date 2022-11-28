@@ -1,22 +1,37 @@
 
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %} Register {% endblock  %}
 
 {% block content %}
 
-    <div class="container jumbotron">
-    {% if registered %}
-        <strong>Thank You for Registering with Us.</strong>
-        <a href="{% url 'index' %}" class="btn-link btn">Return to the HomePage</a><br>
-    {% else %}
-        <strong class="display-3 mb-4">Register Here... </strong>
-        <form action="{% url 'register' %}" class="pt-3" method="POST">
-            {% csrf_token %}
-            {{ registration_form.as_p }}
-            <input type="submit" name="submit" value="Register" class="btn btn-success">
-            <p class="p-2 m-1">Already a Member? <a href="{% url 'login' %}">Sign In Here...</a></p>
-        </form>
-    {% endif %}
-    </div>
+<link rel="stylesheet" href="{% static './css/style.css' %}">
+
+<div id="wrapper">
+    <div class="herotext">
+        <div class="logincontainer">
+            <div class="logintext">Register</div>
+            <div class="loginform">
+            {% if registered %}
+                <strong>Thank You for Registering with Us.</strong>
+                <a href="{% url 'index' %}" class="btn-link btn">Return to the HomePage</a><br>
+            {% else %}
+                <strong class="display-3 mb-4">Register Here... </strong>
+                <form action="{% url 'register' %}" class="pt-3" method="POST">
+                    {% csrf_token %}
+                    {{ registration_form.as_p }}
+                    <input type="submit" name="submit" value="Register" class="submitBtn">
+                    <p class="p-2 m-1">Already a Member? <a href="{% url 'login' %}">Sign In Here...</a></p>
+                </form>
+            {% endif %}
+                <br>
+                <a class="submitBtn" href="{% url 'login' %}">SignIn</a>
+                Or SignUp with:
+                <a href="https://facebook.com"><img src="{% static './images/l.png' %}" alt="facebook" width="40px" height="40px">|<a href="https://mail.google.com/"><img src="{% static './images/k.png' %}" alt="google" width="40px" height="40px"></a>
+            </div>
+        </div>
+    </center>
+</div>
 {% endblock %}

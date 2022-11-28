@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: url("../images/j.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    overflow: hidden;
+}
+.nav{
+    display: flex;
+    margin-left: 40px;
+}
+.nav-item{
+    display: block;
+    margin-right: 2px;
+    padding: 20px;
+    background-color: black;
+}
+.nav-item a{
+    color: white;
+    text-decoration: none;
+}
+.herotext{
+    margin-left: 50px;
+}
+.styled-header-text{
+    width: 370px;
+    color: rgba(0,0,0,1);
+    font-family: Blackadder ITC;
+    font-weight: Regular;
+    font-size: 72px;
+    opacity: 1;
+}
+
+.welcomeMessage{
+    margin-left: 170px;
+    width: 455px;
+    color: rgba(240,238,185,1);
+    font-family: Goudy Stout;
+    font-weight: Regular;
+    font-size: 28px;
+    opacity: 1;
+    text-align: left;
+}
+
+input[type=text],input[type=number]{   
+    width: 15%;   
+    margin: 8px 0;  
+    padding: 12px 12px;   
+    display: inline-block;   
+    border: 2px solid whitesmoke;   
+    box-sizing: border-box;   
+} 
+.submitBtn{
+    width: 200px;
+    background-color: black;
+    padding: 5px;
+    color: rgba(255,255,255,1);
+    font-family: Bernard MT Condensed;
+    font-weight: Regular;
+    font-size: 18px;
+    opacity: 1;
+    text-align: center;
+}
+.offerForm{
+    margin-left: 100px;
+}
+.popularTable{
+    margin-left: 170px;
+}
+table, td, th {
+    border: 1px solid;
+    padding: 10px;
+  }
+  
+table {
+    background-color: white;
+    width: 40%;
+    border-collapse: collapse;
+}

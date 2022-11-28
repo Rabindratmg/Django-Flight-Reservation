@@ -1,34 +1,96 @@
-
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<table class='table'>
-    <thead>
-        <tr>
-        <th>From</th>
-        <th>To</th>
-        <th>Offer</th>
-        <th>Original</th>
-        <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        {% for offer in my_offer %}
-        <tr>
-            <td>{{ offer.From }}</td>
-            <td>{{ offer.To }}</td>
-            <td>{{ offer.offer }}</td>
-            <td>{{ offer.orginal }}</td>
-            {% if offer.is_approved %}
-                <td>Accepted</td>
-            {% elif offer.is_rejected %}
-                <td> Rejected <td>
-            {% else %}
-                <td> Under review <td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<link rel="stylesheet" href="{% static './css/placeorder.css' %}">
+    {% if user.is_authenticated and not user.is_superuser %}
+        <div class="nav">
+            <div class="nav-item"><a href="{% url 'addoffer' %}">Place Offer</a></div>
+            <div class="nav-item"><a href="{% url 'adminreview' %}">Moderator</a></div>
+            <div class="nav-item"><a href="{% url 'profile' %}">Profile</a></div>
+        </div>
+        <div class="herotext">
+            <span class="styled-header-text">Student Travel</span>
+        </div>
+        <div class="nav">
+            <div class="nav-item"><a href="#" class="styled-menu-text">About Us</a></div>
+            <div class="nav-item"><a href="#" class="styled-menu-text">Contact Us</a></div>   
+        </div>
+    <br>
+        {% if my_offer %}
+            <table class='table'>
+                <thead>
+                    <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Offer</th>
+                    <th>Original</th>
+                    <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for offer in my_offer %}
+                    <tr>
+                        <td>{{ offer.From }}</td>
+                        <td>{{ offer.To }}</td>
+                        <td>{{ offer.offer }}</td>
+                        <td>{{ offer.orginal }}</td>
+                        {% if offer.is_approved %}
+                            <td>Accepted</td>
+                        {% elif offer.is_rejected %}
+                            <td> Rejected <td>
+                        {% else %}
+                            <td> Under review <td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+                <h1> No any offers added </h1>
+        {% endif %}
+
+    {% elif user.is_superuser %}
+
+        <div class="nav">
+            <div class="nav-item"><a href="{% url 'home' %}">Home</a></div>
+            <div class="nav-item"><a href="{% url 'adminreview' %}">Moderator</a></div>
+            <div class="nav-item"><a href="{% url 'profile' %}">Profile</a></div>
+        </div>
+    <div class="welcomeMessage">
+        Welcome {{ request.user }}
+        <br>
+        Basic Report
+    </div>
+    <div class="report">
+
+        <div class="popularTable">
+            <table class="popTable">
+                <tr>
+                    <td class="items">Views</td>
+                    <td class="numbers">1158</td>
+                </tr>
+                <tr>
+                    <td class="place">Active Users</td>
+                    <td class="likes">325</td>
+                </tr>
+                <tr>
+                    <td class="place">New Users</td>
+                    <td class="likes">833</td>
+                </tr>
+                <tr>
+                    <td class="place">Flight Booked</td>
+                    <td class="likes">745</td>
+                </tr>
+            </table>
+    </div>
+    {% else %}
+    <div class="nav">
+        <div class="nav-item"><a href="{% url 'addoffer' %}">Login</a></div>
+        <div class="nav-item"><a href="{% url 'adminreview' %}">Register</a></div>
+    </div>
+    <h1> you are not logged in please login to review your profile </h1>
+    {% endif %}
 
 {% endblock content %}

@@ -1,52 +1,53 @@
-{% include 'base.html' %}
-
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    {% if user.is_superuser %}
+ 
 
-        {% if Offers %}
-            
-            <table class='table'>
-                <thead>
-                    <tr>
-                    <th>By</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Offer</th>
-                    <th>Original</th>
-                    <th>Options </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    {% for offer in Offers %}
-                    <tr>
-                        <td>{{ offer.user }}</td>
-                        <td>{{ offer.From }}</td>
-                        <td>{{ offer.To }}</td>
-                        <td>{{ offer.offer }}</td>
-                        <td>{{ offer.orginal }}</td>
-                        <td><a href="{% url 'reject' offer.id %}"><button class="btn btn-danger"> Reject </button> </a>  <a href="{% url 'accept' offer.id %}"><button class="btn btn-primary"> Approve </button></a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-                
-            
-           
-
-        {% else %}
-            <h5>No any offers for review</h5>
-        {% endif %}
-
-
-    {% else%}
-        <div class="container">
-            <form id="offer_form" class="form" method="post">
-                {% csrf_token %} <!-- for security reasons -->
-                {{Offer_form.as_p}} <!-- rendering form as paragraph -->
-                <input type="submit" class="btn  btn-outline-info" value="Send to Moderator">
-                </form>
+    <div id="wrapper">
+        <link rel="stylesheet" href="{% static './css/placeorder.css' %}">
+        <center>
+        <div class="herotext">
+            <span class="styled-header-text">Student Travel</span>
         </div>
-    {% endif %}
+        {% if user.is_authenticated and not user.is_superuser %}
+            <div class="nav">
+                <div class="nav-item"><a href="{% url 'addoffer' %}">Place Offer</a></div>
+                <div class="nav-item"><a href="{% url 'adminreview' %}">Moderator</a></div>
+                <div class="nav-item"><a href="{% url 'profile' %}">Profile</a></div>
+        </div>
+            <div class="herotext">
+                <span class="styled-header-text">Student Travel</span>
+            </div>
+            <div class="nav">
+                <div class="nav-item"><a href="#" class="styled-menu-text">About Us</a></div>
+                <div class="nav-item"><a href="#" class="styled-menu-text">Contact Us</a></div>   
+            </div>
+            <br>
+            <br>
+            <div class="welcomeMessage">
+                Welcome
+            </div>
+            <br>
+            <div class="offerForm">
+                <form id="offer_form" class="form" method="post">
+                    {% csrf_token %} <!-- for security reasons -->
+                    {{Offer_form.as_p}} <!-- rendering form as paragraph -->
+                    <input type="submit" class="btn  btn-outline-info" value="Send to Moderator">
+                </form>
+            </div>
+        {% elif user.is_superuser %}
+        <div class="nav">
+            <div class="nav-item"><a href="{% url 'adminreview' %}">Moderator</a></div>
+    </div>
+            <h1> Moderator cannot add offers</h1>
+        {% else %}
+        <div class="nav">
+            <div class="nav-item"><a href="{% url 'login' %}">Login</a></div>
+            <div class="nav-item"><a href="{% url 'register' %}">Register</a></div>
+        </div>
+        <h1>Please Login before adding offers.</h1>
+        {% endif %}
+    </center>
+    </div>
 
 {% endblock content %}

@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: url("../images/a.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.nav{
+    display: flex;
+    margin-left: 40px;
+}
+.nav-item{
+    display: block;
+    margin-right: 2px;
+    padding: 20px;
+    background-color: black;
+}
+.nav-item a{
+    color: white;
+    text-decoration: none;
+}
+input[type=text]{   
+    width: 40%;   
+    margin: 8px 0;  
+    padding: 12px 12px;   
+    display: inline-block;   
+    border: 2px solid whitesmoke;   
+    box-sizing: border-box;   
+}
+.submitBtn{
+    width: 100px;
+    background-color: black;
+    padding: 5px;
+    color: rgba(255,255,255,1);
+    font-family: Bernard MT Condensed;
+    font-weight: Regular;
+    font-size: 18px;
+    opacity: 1;
+    text-align: center;
+}
+.searchtext{
+    margin-left: 100px;
+    width: 867px;
+    color: rgba(168,225,86,1);
+    font-family: Snap ITC;
+    font-weight: Regular;
+    font-size: 72px;
+    opacity: 1;
+    text-align: left;
+}
+.searchBar{
+    margin-left: 100px;
+}

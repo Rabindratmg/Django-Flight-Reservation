@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search results {% endblock  %}
+
+{% block content  %}
+    <link rel="stylesheet" href="{% static './css/search.css' %}">
+    <div id="wrapper">
+        <div class="herotext">
+            <span class="styled-header-text">Student Travel</span>
+        </div>
+        <div class="nav">
+            <div class="nav-item"><a href="{% url 'home' %}">Back</a></div>
+        </div>
+        <div class="nav">
+            <div class="nav-item"><a href="#" class="styled-menu-text">Search Flight</a></div>
+            <div class="nav-item"><a href="#" class="styled-menu-text">About Us</a></div>
+            <div class="nav-item"><a href="#" class="styled-menu-text">Contact Us</a></div>   
+        </div>
+        <br>
+        <div><p class="selectText">Select Flight company icon to move on</p></div>
+        <br>
+        <div class="result">
+            <div class="popularTable">
+                <table class="popTable">
+                    <tr>
+                        <td class="picture"><a href="#"><img src="{% static './images/h.png' %}" alt="flight" width="100px" height="70px"></a></td>
+                        <td class="likes">QuantasRound Trip Was: 370$ Offer 300$</td>
+                    </tr>
+                    <tr>
+                        <td class="picture"><a href="#"><img src="{% static './images/i.png' %}" alt="flight" width="100px" height="70px"></a></td>
+                        <td class="likes">Regional(Rex)Round Trip was: 380$ Offer:320$</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

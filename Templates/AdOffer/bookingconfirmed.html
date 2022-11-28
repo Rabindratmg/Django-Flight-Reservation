@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Book Flight{% endblock  %}
+
+
+{% block content  %}
+<link rel="stylesheet" href="{% static './css/accomodation.css' %}">
+    <div id="wrapper">
+        <div class="herotext">
+            <span class="styled-header-text">Booking Confirmed</span>
+        </div>
+            {% include 'nav.html' %}
+        <div class="bookingText">
+            
+                From Adelaide
+                To Sydney
+                Fkight: Jetstar
+                Seat:E1
+                Amont Paid: 300$
+        </div>
+        <div class="accomodation">
+            <span class="styled-header-text">Need Acommodation</span><br>   
+            <div class="accomimage">
+            <a href="./accom.html"><img src="{% static './images/a.png' %}" alt="" height="200px" width="400px"></a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

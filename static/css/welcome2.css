@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: url("../images/f.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+}
+.nav{
+    display: flex;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+.nav-item{
+    display: block;
+    margin-right: 2px;
+    padding: 20px;
+    background-color: black;
+}
+.nav-item a{
+    color: white;
+    text-decoration: none;
+}
+.herotext{
+    margin-left: 50px;
+}
+.styled-header-text{
+    width: 370px;
+    color: rgba(0,0,0,1);
+    font-family: Blackadder ITC;
+    font-weight: Regular;
+    font-size: 72px;
+    opacity: 1;
+}
+
+.styled-menu-text{
+    text-decoration: none;
+    color: rgba(255,255,255,1);
+    font-family: Freestyle Script;
+    font-weight: Regular;
+    font-size: 36px;
+    opacity: 1;
+}
+.searchField{
+    margin-left: 50px;
+}
+input[type=text]{   
+    width: 30%;   
+    margin: 8px 0;  
+    padding: 12px 12px;   
+    display: inline-block;   
+    border: 2px solid whitesmoke;   
+    box-sizing: border-box;   
+}  
+
+.searchBtn{
+    width: 100px;
+    background-color: lightgreen;
+    padding: 10px;
+    color: rgba(255,255,255,1);
+    font-family: Bernard MT Condensed;
+    font-weight: Regular;
+    opacity: 1;
+    text-align: center;
+}
+.welcomeMessage{
+    margin-left: 170px;
+    width: 455px;
+    color: rgba(240,238,185,1);
+    font-family: Goudy Stout;
+    font-weight: Regular;
+    font-size: 28px;
+    opacity: 1;
+    text-align: left;
+}
+.destinations{
+    display: flex;
+    margin-left: 170px;
+}
+.popularTable{
+    margin-left: 170px;
+}
+table, td, th {
+    border: 1px solid;
+    padding: 10px;
+  }
+  
+  table {
+    background-color: white;
+    width: 40%;
+    border-collapse: collapse;
+  }
+
+.selectText{
+    margin-left: 40px;
+    width: 610px;
+    background-color: white;
+    color: rgba(0,0,0,1);
+    font-family: Snap ITC;
+    font-weight: Regular;
+    font-size: 28px;
+    opacity: 1;
+    text-align: left;
+}

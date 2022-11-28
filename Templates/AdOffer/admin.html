@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static './css/placeorder.css' %}">
+    {% if user.is_superuser %}
+    <div class="nav">
+        <div class="nav-item"><a href="{% url 'home' %}">Home</a></div>
+        <div class="nav-item"><a href="{% url 'adminreview' %}">Moderator</a></div>
+        <div class="nav-item"><a href="{% url 'profile' %}">Profile</a></div>
+    </div>
+    <div class="herotext">
+        <span class="styled-header-text">Student Travel</span>
+    </div>
+    <br>
+        {% if Offers %} 
+            <table class='table'>
+                <thead>
+                    <tr>
+                    <th>By</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Offer</th>
+                    <th>Original</th>
+                    <th>Options </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for offer in Offers %}
+                    <tr>
+                        <td>{{ offer.user }}</td>
+                        <td>{{ offer.From }}</td>
+                        <td>{{ offer.To }}</td>
+                        <td>{{ offer.offer }}</td>
+                        <td>{{ offer.orginal }}</td>
+                        <td><a href="{% url 'reject' offer.id %}"><button class="btn btn-danger"> Reject </button> </a>  <a href="{% url 'accept' offer.id %}"><button class="btn btn-primary"> Approve </button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                
+            
+           
+
+        {% else %}
+            <h5>No any offers for review</h5>
+        {% endif %}
+    {% else %}
+    <div class="nav">
+        <div class="nav-item"><a href="{% url 'home' %}">Home</a></div>
+    </div>
+            ONly admin can view this page  
+
+    {% endif %}
+
+{% endblock content %}

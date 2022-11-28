@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Number of Passenger{% endblock  %}
+
+
+{% block content  %}
+       <div id="wrapper">
+        <link rel="stylesheet" href="{% static './css/passenger.css' %}">
+        <div class="herotext">
+            <center><span class="styled-header-text">Select Your Seat</span></center>
+        </div>
+            <div class="nav">
+                <div class="nav-item"><a href="#" class="styled-menu-text">Home</a></div>
+                <div class="nav-item"><a href="#" class="styled-menu-text">Search</a></div>
+            </div>
+            <div class="seats">
+                <center>
+                    <img src="{% static './images/c.png' %}" alt="seats" height="400px" width="700px">
+                </center>
+            </div>
+            <div class="enterform">
+                <form>
+                    <button class="okBtn">OK</button>
+                    <input type="number" placeholder="Enter number of passengers" required>
+                    <input type="text" placeholder="Enter seat numbers by separating comma." required>
+                </form>
+            </div>
+       </div> 
+
+{% endblock content %}

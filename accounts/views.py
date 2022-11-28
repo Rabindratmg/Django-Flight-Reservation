@@ -23,7 +23,7 @@ def home(request):
     """
       Home View Renders base.html
     """
-    return render(request, "base.html", {})
+    return render(request, "Addoffer/welcome1.html", {})
 
 
 
