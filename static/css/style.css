@@ -75,3 +75,14 @@ input[type=email], input[type=password] ,input[type=text]{
     background-color: white;
 
 }
+
+table, td, th {
+    border: 1px solid;
+    padding: 10px;
+  }
+  
+table {
+    background-color: white;
+    width: 40%;
+    border-collapse: collapse;
+  }

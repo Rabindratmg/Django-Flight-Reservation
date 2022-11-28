@@ -19,9 +19,20 @@
         <div class="popularTable">
             <table class="popTable">
                 <tr>
-                    <td>Your Seat</td>
-                    <td>300$</td>
+                    <th>Flight</th>
+                    <th>Seat No</th>
+                    <th>Passenger NO</th>
+                    <th>Price</th>
                 </tr>
+                {% for seat in seats %}
+                <tr>
+                    <td>{{ seat.flight.user.username }}</td>
+                    <td>{{ seat.Seat_no }}</td>
+                    <td>{{ seat.passengers_no }} </td>
+                    <td>{{ seat.flight.offer }} </td>
+
+                </tr>
+                {% endfor %}
             </table>
         </div>
             <div class="payment">
@@ -30,7 +41,7 @@
                 <div class="column">
                     Credit \ Debit Cards <br>
                     <img src="{% static './images/d.png' %}" alt="cards" height="80px" width="350px">
-                    <form>
+                    <form method="POST" action="{% url 'confirmbooking' %}">
                         <input type="text" name="cardholdername" placeholder="Card Holder Name" required><br>
                         <input type="text" name="cardnumber" placeholder="Card Number" required><br>
                         <input type="text" name="cvcCode" placeholder="CVC Code" required><br>

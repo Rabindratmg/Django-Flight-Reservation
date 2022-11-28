@@ -5,19 +5,26 @@
 
 
 {% block content  %}
-<link rel="stylesheet" href="{% static './css/accomodation.css' %}">
+<link rel="stylesheet" href="{% static './css/style.css' %}">
     <div id="wrapper">
         <div class="herotext">
             <span class="styled-header-text">Booking Confirmed</span>
         </div>
             {% include 'nav.html' %}
+
+            <center>
         <div class="bookingText">
+
+            <h1> Your booking has been confirmed. thank you for chosing us. </h1> 
             
-                From Adelaide
-                To Sydney
-                Fkight: Jetstar
-                Seat:E1
-                Amont Paid: 300$
+                {% for flight in booked %}
+                <h4> FROM:  {{ flight.seat.flight.From }} TO: {{ flight.seat.flight.To }} Seat NO : {{ flight.seat.Seat_no }} Total: {{flight.Total_amount}}
+                        has been booked.
+                </h4>
+                {% endfor %}
+            
+            
+             
         </div>
         <div class="accomodation">
             <span class="styled-header-text">Need Acommodation</span><br>   
@@ -25,6 +32,7 @@
             <a href="./accom.html"><img src="{% static './images/a.png' %}" alt="" height="200px" width="400px"></a>
             </div>
         </div>
+    </center>
     </div>
 
 {% endblock content %}

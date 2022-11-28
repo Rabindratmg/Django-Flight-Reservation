@@ -21,10 +21,11 @@
         <br>
         <div class="welcomeMessage">Welcome {{ request.user.username }}</div>
         <div class="searchField">
-            <form>
-                <button class="searchBtn" type="submit">Search</button>
+            <form method="GET" action="{% url 'search' %}">
+                
                 <input type="text" placeholder="From ? ">
                 <input type="text" placeholder="To ? ">
+                <button class="searchBtn" type="submit">Search</button>
             </form>
         </div>
         <br>
@@ -36,20 +37,18 @@
         </div>
         <div class="welcomeMessage">Popular</div>
         <div class="popularTable">
-            <table class="popTable">
-                <tr>
-                    <td class="place">Sydney</td>
-                    <td class="likes">25 Likes</td>
-                </tr>
-                <tr>
-                    <td class="place">Gold Coast</td>
-                    <td class="likes">23 Likes</td>
-                </tr>
-                <tr>
-                    <td class="place">Darwin</td>
-                    <td class="likes">22 Likes</td>
-                </tr>
-            </table>
+            
+                <table class="popTable">
+                    {% for offer in offers %}
+                    <tr>
+                        <td class="place">{{offer.From}}</td>
+                        <td class="place">{{offer.To}}</td>
+                        <td class="place">{{offer.offer}}</td>
+                        <td class="place"><a href="{% url 'passenger' %}"><button> Book a seat </button></a> </td>
+                        <td class="likes">25 Likes</td>
+                    </tr>
+                    {% endfor %}
+                </table>
         </div>
     </div>
 {% endblock content %}

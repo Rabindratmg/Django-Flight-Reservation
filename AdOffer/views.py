@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Flight
+from .models import Flight, BookSeat, Payment
 from .forms import OfferForm
 
 
@@ -7,7 +7,11 @@ from .forms import OfferForm
 
 
 def Home(request):
-    return render(request, "Adoffer/welcome1.html", {})
+    context={
+        "offers": Flight.objects.all() 
+        }
+    return render(request, "AdOffer/welcome1.html", context)
+
 
 def Offer(request):
     context = {}
@@ -57,14 +61,27 @@ def RejectOfferAdmin(request,pk):
     offer.save()
     return redirect('offer')
 
-def Payment(request):
-    return render(request, 'AdOffer/payment.html')
+def Payments(request):
+    seats= BookSeat.objects.all()
+    if request.POST:
+        context={
+            'booked': Payment.objects.all()
+        }
+        return render(request, 'AdOffer/bookingconfirmed.html', context)
+    return render(request, 'AdOffer/payment.html',{'seats':seats})
 
 def Passenger(request):
     return render(request, 'AdOffer/numberofpassenger.html')
 
 def ConfirmBooking(request):
-    return render(request, 'AdOffer/bookingconfirmed.html')
+    context={
+        'booked': Payment.objects.all()
+    }
+    return render(request, 'AdOffer/bookingconfirmed.html', context)
 
 def Search(request):
-    return render(request, 'AdOffer/searchresult1.html')
+    context={
+        "offers": Flight.objects.all()
+
+    }
+    return render(request, 'AdOffer/searchresult1.html',context)

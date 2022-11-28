@@ -15,11 +15,14 @@ class Flight(models.Model):
 
 
 class BookSeat(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    flight = models.ForeignKey('Flight', on_delete=models.CASCADE)
     passengers_no = models.IntegerField()
     Seat_no = models.CharField(max_length=100)
 
 
 class Payment(models.Model):
+    seat = models.ForeignKey(BookSeat, on_delete=models.CASCADE)
     payment_type = models.CharField(max_length=100)
     payment_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     Total_amount = models.DecimalField(max_digits=20, decimal_places=2)
