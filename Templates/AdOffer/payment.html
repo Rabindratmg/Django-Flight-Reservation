@@ -11,9 +11,9 @@
             <span class="styled-header-text">Payment</span>
         </div>
         <div class="nav">
-            <div class="nav-item"><a href="#" class="styled-menu-text">Back</a></div>
-            <div class="nav-item"><a href="#" class="styled-menu-text">Home</a></div>
-            <div class="nav-item"><a href="#" class="styled-menu-text">Search</a></div>   
+            <div class="nav-item"><a href="{% url 'passenger' %}" class="styled-menu-text">Back</a></div>
+            <div class="nav-item"><a href="{% url 'home' %}" class="styled-menu-text">Home</a></div>
+            <div class="nav-item"><a href="{% url 'search' %}" class="styled-menu-text">Search</a></div>   
         </div>
         <br>
         <div class="popularTable">
@@ -41,7 +41,7 @@
                 <div class="column">
                     Credit \ Debit Cards <br>
                     <img src="{% static './images/d.png' %}" alt="cards" height="80px" width="350px">
-                    <form method="POST" action="{% url 'confirmbooking' %}">
+                    <form method="POST" action="{% url 'confirmbooking' %}"> {% csrf_token %}
                         <input type="text" name="cardholdername" placeholder="Card Holder Name" required><br>
                         <input type="text" name="cardnumber" placeholder="Card Number" required><br>
                         <input type="text" name="cvcCode" placeholder="CVC Code" required><br>

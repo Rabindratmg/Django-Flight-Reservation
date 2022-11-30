@@ -6,6 +6,7 @@ class MyAccountManager(BaseUserManager):
     """
         This is a manager for Account class 
     """
+    # Method for  creating new user
     def create_user(self, email, username, password=None):
         if not email:
             raise ValueError("Users must have an Emaill address")
@@ -19,7 +20,7 @@ class MyAccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-
+    # Method for creating super user.
     def create_superuser(self, email, username, password):
         user = self.create_user(
                 email=self.normalize_email(email),
@@ -32,6 +33,8 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
+#Custom base class for email authentication
 class Account(AbstractUser):
     
     """

@@ -62,7 +62,7 @@ def RejectOfferAdmin(request,pk):
     return redirect('adminreview')
 
 def Payments(request):
-    seats= BookSeat.objects.all()
+    seats = BookSeat.objects.all()
     if request.POST:
         context={
             'booked': Payment.objects.all()
@@ -80,8 +80,14 @@ def ConfirmBooking(request):
     return render(request, 'AdOffer/bookingconfirmed.html', context)
 
 def Search(request):
-    context={
-        "offers": Flight.objects.all()
+    if request.GET:
+        loc = request.GET.get('From')
+        des = request.GET.get("To")
+        context={
+            "offers": Flight.objects.filter(From=loc, To=des)
 
-    }
-    return render(request, 'AdOffer/searchresult1.html',context)
+        }
+        return render(request, 'AdOffer/searchresult1.html',context)
+    else:
+        return redirect("home")
+

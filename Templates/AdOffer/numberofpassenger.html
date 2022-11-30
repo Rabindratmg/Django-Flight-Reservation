@@ -22,9 +22,10 @@
             </div>
             <div class="enterform">
                 <form action="{% url 'payment' %}">
+                    {% csrf_token %}
                     <button class="okBtn">OK</button>
-                    <input type="number" placeholder="Enter number of passengers" required>
-                    <input type="text" placeholder="Enter seat numbers by separating comma." required>
+                    <input type="number" name='noofpassenger' placeholder="Enter number of passengers" required>
+                    <input type="text" name='seatno' placeholder="Enter seat numbers by separating comma." required>
                 </form>
             </div>
        </div> 
